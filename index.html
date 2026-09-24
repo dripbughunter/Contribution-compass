@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f3f6f1" />
+    <meta
+      name="description"
+      content="Contribution Compass is a local-first tracker for intentional open-source contribution work."
+    />
+    <title>Contribution Compass — Open-source work, with direction</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <header class="site-header" id="top">
+        <a class="brand" href="#top" aria-label="Contribution Compass home">
+          <span class="brand-mark">↗</span>
+          <span>Contribution Compass</span>
+        </a>
+
+        <nav class="top-nav" aria-label="Primary navigation">
+          <a class="active" href="#top">Overview</a>
+          <a href="#workspace">Workspace</a>
+          <a href="#how-it-works">Method</a>
+        </nav>
+
+        <div class="header-actions">
+          <span class="local-badge"><span></span> Local-first</span>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark theme" title="Switch theme">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy-block">
+          <p class="eyebrow">OPEN-SOURCE WORKSPACE</p>
+          <h1 id="hero-title">Less noise.<br /><span>More shipped work.</span></h1>
+          <p class="hero-copy">
+            A private command center for researching opportunities, applying with intent, and following through on meaningful open-source contributions.
+          </p>
+          <a class="hero-action" href="#workspace">Plan an issue <span>↓</span></a>
+        </div>
+
+        <aside class="focus-panel" aria-label="Contribution Compass principle">
+          <div class="focus-orbit" aria-hidden="true">
+            <span class="orbit-dot dot-one"></span>
+            <span class="orbit-dot dot-two"></span>
+            <span class="focus-arrow">↗</span>
+          </div>
+          <div>
+            <p class="eyebrow">THE COMPASS RULE</p>
+            <h2>One focused next move.</h2>
+            <p>Choose work you can explain, complete, and stand behind.</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="stats" aria-label="Contribution summary">
+        <article class="stat-card">
+          <div class="stat-card-top">
+            <span class="stat-label">Total issues</span>
+            <span class="stat-icon icon-slate">⌁</span>
+          </div>
+          <strong id="total-count">0</strong>
+          <span class="stat-note">Ideas and active work</span>
+        </article>
+        <article class="stat-card">
+          <div class="stat-card-top">
+            <span class="stat-label">Active focus</span>
+            <span class="stat-icon icon-blue">↗</span>
+          </div>
+          <strong id="progress-count">0</strong>
+          <span class="stat-note">Assigned or in progress</span>
+        </article>
+        <article class="stat-card accent-card">
+          <div class="stat-card-top">
+            <span class="stat-label">Completed</span>
+            <span class="stat-icon icon-green">✓</span>
+          </div>
+          <strong id="completed-count">0</strong>
+          <span class="stat-note">Work you followed through on</span>
+        </article>
+      </section>
+
+      <section class="next-move" aria-labelledby="next-move-title">
+        <div class="next-move-icon">✦</div>
+        <div>
+          <p class="eyebrow">YOUR NEXT MOVE</p>
+          <h2 id="next-move-title">Add one realistic issue to your queue.</h2>
+          <p id="next-move-copy">Start small, understand the scope, and do quality work.</p>
+        </div>
+      </section>
+
+      <section class="workflow-strip" aria-label="Contribution workflow">
+        <div class="workflow-step"><span>01</span><strong>Research</strong><small>Read the scope first</small></div>
+        <div class="workflow-line" aria-hidden="true"></div>
+        <div class="workflow-step"><span>02</span><strong>Apply</strong><small>Show a clear plan</small></div>
+        <div class="workflow-line" aria-hidden="true"></div>
+        <div class="workflow-step"><span>03</span><strong>Deliver</strong><small>Ship reviewable work</small></div>
+      </section>
+
+      <section class="workspace-grid" id="workspace" aria-label="Contribution workspace">
+        <section class="panel add-panel" aria-labelledby="form-title">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" id="form-eyebrow">NEW ENTRY</p>
+              <h2 id="form-title">Plan your work</h2>
+            </div>
+            <span class="panel-number" aria-hidden="true">01</span>
+          </div>
+
+          <form id="issue-form" novalidate>
+            <label>
+              Issue title <span aria-hidden="true">*</span>
+              <input
+                id="title"
+                name="title"
+                type="text"
+                placeholder="e.g. Document escrow seller veto"
+                maxlength="120"
+                aria-describedby="title-error"
+                required
+              />
+              <span id="title-error" class="field-error"></span>
+            </label>
+
+            <label>
+              Repository / project <span aria-hidden="true">*</span>
+              <input
+                id="project"
+                name="project"
+                type="text"
+                placeholder="e.g. owner/repository"
+                maxlength="80"
+                aria-describedby="project-error"
+                required
+              />
+              <span id="project-error" class="field-error"></span>
+            </label>
+
+            <label>
+              Issue link <span class="optional">optional</span>
+              <input
+                id="url"
+                name="url"
+                type="url"
+                inputmode="url"
+                placeholder="https://github.com/owner/repository/issues/123"
+                aria-describedby="url-error"
+              />
+              <span id="url-error" class="field-error"></span>
+            </label>
+
+            <div class="form-row">
+              <label>
+                Status
+                <select id="status" name="status">
+                  <option value="Interested">Interested</option>
+                  <option value="Applied">Applied</option>
+                  <option value="Assigned">Assigned</option>
+                  <option value="In progress">In progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </label>
+
+              <label>
+                Priority
+                <select id="priority" name="priority">
+                  <option value="Low">Low</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Personal deadline <span class="optional">optional</span>
+              <input id="due-date" name="dueDate" type="date" aria-describedby="due-date-error" />
+              <span id="due-date-error" class="field-error"></span>
+            </label>
+
+            <label>
+              Notes <span class="optional">optional</span>
+              <textarea
+                id="notes"
+                name="notes"
+                rows="4"
+                placeholder="Scope, next step, deadline, or questions to research..."
+                maxlength="500"
+              ></textarea>
+            </label>
+
+            <p id="form-message" class="form-message" aria-live="polite"></p>
+
+            <div class="form-actions">
+              <button id="save-button" class="primary-button" type="submit">Add to tracker <span>→</span></button>
+              <button id="cancel-edit" class="secondary-button" type="button" hidden>Cancel edit</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel list-panel" aria-labelledby="list-title">
+          <div class="list-topbar">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">YOUR QUEUE</p>
+                <h2 id="list-title">Contribution plan</h2>
+              </div>
+              <span class="panel-number" aria-hidden="true">02</span>
+            </div>
+            <div class="data-actions">
+              <label class="import-button" for="import-data">Import <span>↑</span></label>
+              <input id="import-data" type="file" accept="application/json,.json" hidden />
+              <button id="export-data" class="export-button" type="button">Export <span>↓</span></button>
+            </div>
+          </div>
+
+          <div class="filters" aria-label="Filter contribution issues">
+            <label class="search-label">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <span class="sr-only">Search issues</span>
+              <input id="search" type="search" placeholder="Search your queue" />
+            </label>
+            <label>
+              <span class="sr-only">Filter issues by status</span>
+              <select id="status-filter">
+                <option value="All">All statuses</option>
+                <option value="Interested">Interested</option>
+                <option value="Applied">Applied</option>
+                <option value="Assigned">Assigned</option>
+                <option value="In progress">In progress</option>
+                <option value="Completed">Completed</option>
+              </select>
+            </label>
+            <label>
+              <span class="sr-only">Filter issues by priority</span>
+              <select id="priority-filter">
+                <option value="All">All priorities</option>
+                <option value="High">High priority</option>
+                <option value="Medium">Medium priority</option>
+                <option value="Low">Low priority</option>
+              </select>
+            </label>
+            <label>
+              <span class="sr-only">Sort issues</span>
+              <select id="sort-filter">
+                <option value="updated">Recently updated</option>
+                <option value="deadline">Nearest deadline</option>
+                <option value="priority">Highest priority</option>
+                <option value="created">Newest entry</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="empty-state" class="empty-state">
+            <div class="empty-orbit" aria-hidden="true"><span>↗</span></div>
+            <p class="eyebrow">ROOM TO FOCUS</p>
+            <h3>Your queue is clear</h3>
+            <p>Add one focused issue. Quality work starts with a realistic plan.</p>
+          </div>
+
+          <ul id="issue-list" class="issue-list" aria-live="polite"></ul>
+        </section>
+      </section>
+
+      <section class="method" id="how-it-works" aria-labelledby="method-title">
+        <div class="method-intro">
+          <p class="eyebrow">THE METHOD</p>
+          <h2 id="method-title">A calmer way to contribute.</h2>
+          <p>High-quality open-source work is more than a merged PR. It starts with choosing an issue you understand and ends with work that maintainers can review with confidence.</p>
+        </div>
+        <ol class="method-list">
+          <li><span>01</span><strong>Read the repository</strong><p>Understand contribution guidance, tests, and the issue’s actual scope.</p></li>
+          <li><span>02</span><strong>Apply with intent</strong><p>Explain the approach you can realistically deliver—not a generic promise.</p></li>
+          <li><span>03</span><strong>Keep a clean queue</strong><p>Track status, deadlines, feedback, and next steps without taking on too much.</p></li>
+        </ol>
+      </section>
+
+      <footer>
+        <p>Built as a learning project for thoughtful open-source contribution.</p>
+        <button id="clear-data" class="text-button" type="button">Clear local data</button>
+      </footer>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden>
+      <span id="toast-message"></span>
+      <button id="toast-action" type="button" hidden></button>
+    </div>
+
+    <template id="issue-template">
+      <li class="issue-card">
+        <div class="issue-accent" aria-hidden="true"></div>
+        <div class="issue-card-main">
+          <div class="issue-card-title-row">
+            <h3 class="issue-title"></h3>
+            <span class="priority-badge"></span>
+          </div>
+          <p class="issue-project"></p>
+          <a class="issue-link" target="_blank" rel="noreferrer noopener" hidden>Open issue <span>↗</span></a>
+          <p class="issue-notes"></p>
+          <div class="issue-meta">
+            <p class="issue-deadline" hidden></p>
+            <p class="issue-updated"></p>
+          </div>
+        </div>
+        <div class="issue-card-actions">
+          <label class="quick-status">
+            <span class="sr-only">Update issue status</span>
+            <select class="status-select">
+              <option value="Interested">Interested</option>
+              <option value="Applied">Applied</option>
+              <option value="Assigned">Assigned</option>
+              <option value="In progress">In progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </label>
+          <div class="card-buttons">
+            <button class="edit-button" type="button">Edit</button>
+            <button class="delete-button" type="button" aria-label="Delete issue">×</button>
+          </div>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

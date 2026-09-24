@@ -1,0 +1,12 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local development artifacts
+coverage/
+*.log
+
+# Exported personal tracker data
+contribution-compass-export.json
