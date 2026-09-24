@@ -474,3 +474,22 @@ controls.importInput.addEventListener("change", async (event) => {
 setupTheme();
 refreshInterface();
 if (notice) showToast(notice);
+
+document.addEventListener("keydown", (event) => {
+  const tagName = event.target.tagName;
+  const isTyping = ["INPUT", "TEXTAREA", "SELECT"].includes(tagName) || event.target.isContentEditable;
+
+  if (
+    event.key !== "/" ||
+    event.defaultPrevented ||
+    event.ctrlKey ||
+    event.metaKey ||
+    event.altKey ||
+    isTyping
+  ) {
+    return;
+  }
+
+  event.preventDefault();
+  controls.search.focus();
+});
